@@ -1,0 +1,33 @@
+{
+    "name": "brooksyang/entrance",
+    "description": "Role-based Permissions for laravel 5.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BrooksYang",
+            "email": "brooksyang@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": ">=5.5",
+        "predis/predis": ">=1.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "BrooksYang\\Entrance\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BrooksYang\\Entrance\\EntranceServiceProvider",
+                "BrooksYang\\Entrance\\EntranceAdminServiceProvider"
+            ],
+            "aliases": {
+                "Entrance": "BrooksYang\\Entrance\\Facades\\Entrance"
+            }
+        }
+    }
+}
