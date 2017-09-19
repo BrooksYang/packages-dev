@@ -2,12 +2,13 @@
 
 namespace App;
 
+use BrooksYang\Entrance\Traits\EntranceUserTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, EntranceUserTrait;
 
     /**
      * The attributes that are mass assignable.
