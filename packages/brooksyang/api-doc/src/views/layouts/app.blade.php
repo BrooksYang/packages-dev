@@ -16,17 +16,19 @@
 </head>
 <body>
     <div class="container is-fluid">
-        {{-- Nav Bar --}}
-        @include('api_doc::layouts.includes.nav_bar')
+        <div style="position: fixed; top: 10px; height: 30px;">
+            {{-- Nav Bar --}}
+            @include('api_doc::layouts.includes.nav_bar')
+        </div>
 
-        <div class="columns">
+        <div class="columns" style="position: relative; top: 80px;">
             {{-- Menu --}}
             <div class="column is-2" style="position: fixed; height: 1000px; overflow: scroll;">
                 @include('api_doc::layouts.includes.menu')
             </div>
 
-            <div class="column is-offset-2">
-                @yield('content')
+            <div class="column is-offset-2 is-10">
+                @include('api_doc::layouts.includes.form')
             </div>
         </div>
     </div>
