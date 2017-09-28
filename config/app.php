@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        BrooksYang\ApiDoc\ApiDocServiceProvider::class,
 
         /*
          * Application Service Providers...

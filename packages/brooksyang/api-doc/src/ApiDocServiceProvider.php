@@ -13,7 +13,8 @@ class ApiDocServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Load routes
+        $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
     }
 
     /**
