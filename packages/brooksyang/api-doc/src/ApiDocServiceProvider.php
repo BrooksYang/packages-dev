@@ -15,6 +15,14 @@ class ApiDocServiceProvider extends ServiceProvider
     {
         // Load routes
         $this->loadRoutesFrom(__DIR__ . '/routes/api.php');
+
+        // Load views
+        $this->loadViewsFrom(__DIR__ . '/views', 'api_doc');
+
+        // Publish assets
+        $this->publishes([
+            __DIR__ . '/assets' => public_path('vendor/api_doc')
+        ], 'api-doc');
     }
 
     /**

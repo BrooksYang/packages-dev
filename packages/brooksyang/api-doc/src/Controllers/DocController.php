@@ -14,7 +14,7 @@ class DocController extends Controller
      */
     public function index()
     {
-        return 123;
+        return view('api_doc::index');
     }
 
     /**
