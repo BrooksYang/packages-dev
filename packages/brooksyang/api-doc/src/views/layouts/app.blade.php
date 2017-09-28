@@ -21,7 +21,7 @@
 
         <div class="columns">
             {{-- Menu --}}
-            <div class="column is-2" style="position: fixed;">
+            <div class="column is-2" style="position: fixed; height: 1000px; overflow: scroll;">
                 @include('api_doc::layouts.includes.menu')
             </div>
 
