@@ -14,6 +14,14 @@ class DocController extends Controller
      */
     public function index()
     {
+        $path = base_path();
+
+        //获取api的路由
+        exec("php $path/artisan route:list|grep -E 'App'", $lists);
+        exec("php $path/artisan route:list|grep -E 'App'|awk '{print $3\":\"$5\":\"$8}'", $routes);
+
+        dd($lists, $routes);
+
         return view('api_doc::index');
     }
 
