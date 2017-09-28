@@ -1,0 +1,32 @@
+{
+    "name": "brooksyang/api-doc",
+    "description": "Api doc generator for laravel 5.5+",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "BrooksYang",
+            "email": "brooksyang@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0",
+        "laravel/framework": ">=5.5",
+        "predis/predis": ">=1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "BrooksYang\\ApiDoc\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BrooksYang\\ApiDoc\\ApiDocServiceProvider"
+            ],
+            "aliases": {
+                "Doc": "BrooksYang\\ApiDoc\\Facades\\Doc"
+            }
+        }
+    }
+}
