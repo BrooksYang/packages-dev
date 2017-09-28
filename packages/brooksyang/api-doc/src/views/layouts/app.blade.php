@@ -21,10 +21,13 @@
 
         <div class="columns">
             {{-- Menu --}}
-            @include('api_doc::layouts.includes.menu')
+            <div class="column is-2" style="position: fixed;">
+                @include('api_doc::layouts.includes.menu')
+            </div>
 
-
-            @yield('content')
+            <div class="column is-offset-2">
+                @yield('content')
+            </div>
         </div>
     </div>
 
