@@ -1,5 +1,7 @@
 @extends('api_doc::layouts.app')
 
 @section('content')
-    Test
+    <div class="column">
+        Test
+    </div>
 @endsection

@@ -18,13 +18,15 @@
     <div class="container is-fluid">
         {{-- Nav Bar --}}
         @include('api_doc::layouts.includes.nav_bar')
+
+        <div class="columns">
+            {{-- Menu --}}
+            @include('api_doc::layouts.includes.menu')
+
+
+            @yield('content')
+        </div>
     </div>
-
-    {{-- Menu --}}
-    @include('api_doc::layouts.includes.menu')
-
-
-    @yield('content')
 
 
     <!-- Scripts -->
