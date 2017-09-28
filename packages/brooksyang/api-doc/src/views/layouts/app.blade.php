@@ -11,14 +11,23 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    {{--<link href="{{ asset('vendor/api_doc/css/bootstrap.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('vendor/api_doc/css/bulma.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-
-
-        @yield('content')
+    <div class="container is-fluid">
+        {{-- Nav Bar --}}
+        @include('api_doc::layouts.includes.nav_bar')
     </div>
 
+    {{-- Menu --}}
+    @include('api_doc::layouts.includes.menu')
+
+
+    @yield('content')
+
+
+    <!-- Scripts -->
+    {{--<script src="{{ asset('vendor/api_doc/js/bootstrap.min.js') }}"></script>--}}
 </body>
 </html>
