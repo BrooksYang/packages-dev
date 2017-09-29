@@ -3,6 +3,7 @@
 namespace BrooksYang\ApiDoc\Controllers;
 
 use App\Http\Controllers\Controller;
+use BrooksYang\ApiDoc\Facades\Doc;
 use BrooksYang\ApiDoc\Traits\DocHelper;
 
 class DocController extends Controller
@@ -16,11 +17,8 @@ class DocController extends Controller
      */
     public function index()
     {
-        // 获取路由
-        $routes = $this->getRoutes();
-
         // 按模块获取路由
-        $modules = $this->getModules($routes);
+        $modules = Doc::modules();
 
         dd($modules);
 

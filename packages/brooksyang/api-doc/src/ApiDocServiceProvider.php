@@ -21,7 +21,7 @@ class ApiDocServiceProvider extends ServiceProvider
 
         // Publish assets
         $this->publishes([
-            __DIR__ . '/assets' => public_path('vendor/api_doc')
+            __DIR__ . '/assets' => public_path('vendor/api_doc'),
         ], 'api-doc');
     }
 
@@ -32,6 +32,9 @@ class ApiDocServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Register the application bindings.
+        $this->app->bind('doc', function () {
+            return new Doc();
+        });
     }
 }
