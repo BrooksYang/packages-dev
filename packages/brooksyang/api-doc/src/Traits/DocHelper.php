@@ -139,7 +139,7 @@ trait DocHelper
         $docComment = $method->getDocComment();
 
         preg_match('/\s+\*\s+(.+)/', $docComment, $matches);
-        $docs['name'] = $matches[1];
+        $docs['name'] = @$matches[1];
 
         return $docs;
     }
