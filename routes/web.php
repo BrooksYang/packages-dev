@@ -34,3 +34,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::resource('home', 'Home\HomeController');
 
 Route::resource('test', 'Test\TestController');
+
+Route::resource('groups', 'Group\GroupController');
+
+Route::resource('modules', 'Module\ModuleController');
