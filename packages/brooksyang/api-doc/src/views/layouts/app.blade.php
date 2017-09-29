@@ -13,6 +13,10 @@
     <!-- Styles -->
     {{--<link href="{{ asset('vendor/api_doc/css/bootstrap.min.css') }}" rel="stylesheet">--}}
     <link href="{{ asset('vendor/api_doc/css/bulma.css') }}" rel="stylesheet">
+
+    {{-- Css --}}
+    @yield('css')
+
 </head>
 <body>
     <div class="container is-fluid">
