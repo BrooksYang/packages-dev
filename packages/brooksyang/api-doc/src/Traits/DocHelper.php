@@ -120,7 +120,7 @@ trait DocHelper
     }
 
     /**
-     * 获取api文档
+     * 获取api名称
      *
      * @param $controller
      * @param $action
