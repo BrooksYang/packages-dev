@@ -3,8 +3,8 @@
 namespace BrooksYang\ApiDoc\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use ReflectionClass;
 
 class DocController extends Controller
 {
@@ -35,7 +35,7 @@ class DocController extends Controller
      * @param $routes
      * @return array
      */
-    public function getModules($routes)
+    private function getModules($routes)
     {
         // 处理路由
         $modules = [];
@@ -44,87 +44,49 @@ class DocController extends Controller
             if (substr_count($route, '\\') <= 3 ) continue;
 
             // 拆分路由
-            $route = str_replace('App\Http\Controllers\\', '', $route);
             $attr = explode(':', $route);
 
-            // 拼装数据
-            $module = Arr::first(explode('\\', $attr[2]));
+            // 获取模块
+            $controller = str_replace('App\Http\Controllers\\', '', $attr[2]);
+            $module = Arr::first(explode('\\', $controller));
             $route = explode('@', $attr[2]);
-            $modules[$module][] = [
+
+            // 处理路由信息
+            $routeInfo = [
                 'module'     => $module,
                 'method'     => Arr::first(explode('|', $attr[0])),
                 'uri'        => $attr[1],
-                'controller' => Arr::last(explode('\\', $route[0])),
+                'controller' => $route[0],
                 'action'     => $route[1],
             ];
+
+            // 获取api文档
+            $docs = $this->getDocs($routeInfo['controller'], $routeInfo['action']);
+            $routeInfo['name'] = $docs['name'];
+
+            $modules[$module][] = $routeInfo;
         }
 
         return $modules;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * 获取api文档
      *
-     * @return \Illuminate\Http\Response
+     * @param $controller
+     * @param $action
+     * @return mixed
      */
-    public function create()
+    private function getDocs($controller, $action)
     {
-        //
-    }
+        $reflection = new ReflectionClass($controller);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $method = $reflection->getMethod($action);
+        $docComment = $method->getDocComment();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        preg_match('/\s+\*\s+(.+)/', $docComment, $matches);
+        $docs['name'] = $matches[1];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $docs;
     }
 }
