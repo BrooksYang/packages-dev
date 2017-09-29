@@ -38,3 +38,5 @@ Route::resource('test', 'Test\TestController');
 Route::resource('groups', 'Group\GroupController');
 
 Route::resource('modules', 'Module\ModuleController');
+
+Route::resource('dashboard', 'Home\Dashboard\DashboardController');
