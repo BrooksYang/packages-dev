@@ -2,6 +2,7 @@
 
 namespace BrooksYang\ApiDoc;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class ApiDocServiceProvider extends ServiceProvider
@@ -23,6 +24,9 @@ class ApiDocServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/assets' => public_path('vendor/api_doc'),
         ], 'api-doc');
+
+        // View Share
+        $this->viewComposer();
     }
 
     /**
@@ -35,6 +39,16 @@ class ApiDocServiceProvider extends ServiceProvider
         // Register the application bindings.
         $this->app->bind('doc', function () {
             return new Doc();
+        });
+    }
+
+    /**
+     * Share Data
+     */
+    public function viewComposer()
+    {
+        View::composer(['api_doc::layouts.includes.menu'], function ($view) {
+            $view->with('modules', \BrooksYang\ApiDoc\Facades\Doc::modules());
         });
     }
 }

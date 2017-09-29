@@ -19,7 +19,6 @@ class DocController extends Controller
     {
         // 按模块获取路由
         $modules = Doc::modules();
-
         dd($modules);
 
         return view('api_doc::index');

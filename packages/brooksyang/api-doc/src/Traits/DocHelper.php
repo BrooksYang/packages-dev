@@ -23,12 +23,55 @@ trait DocHelper
     }
 
     /**
-     * 按模块获取路由
+     * 获取所有模块
      *
      * @param $routes
      * @return array
      */
     protected function getModules($routes)
+    {
+        // 筛选 App\Http\Controllers 下的控制器
+        $routes = array_filter($routes, function ($item) {
+            return substr_count($item, '\\') > 3;
+        });
+
+        $modules = [];
+
+        foreach ($routes as $route) {
+            $attr = explode(':', $route);
+
+            $module = $this->getModule($attr[2]);
+
+            if (!in_array($module, $modules)) {
+                array_unshift($modules, $module);
+            }
+        }
+
+        return $modules;
+    }
+
+    /**
+     * 获取模块
+     *
+     * @param $controller
+     * @return mixed
+     */
+    protected function getModule($controller)
+    {
+        // 获取模块
+        $controller = str_replace('App\Http\Controllers\\', '', $controller);
+        $module = Arr::first(explode('\\', $controller));
+
+        return $module;
+    }
+
+    /**
+     * 按模块获取路由
+     *
+     * @param $routes
+     * @return array
+     */
+    protected function getRouteInfoByModules($routes)
     {
         // 处理路由
         $modules = [];
@@ -36,12 +79,9 @@ trait DocHelper
             // 排除 App\Http\Controllers 下的控制器
             if (substr_count($route, '\\') <= 3 ) continue;
 
-            // 拆分路由
-            $attr = explode(':', $route);
-
             // 获取模块
-            $controller = str_replace('App\Http\Controllers\\', '', $attr[2]);
-            $module = Arr::first(explode('\\', $controller));
+            $attr = explode(':', $route);
+            $module = $this->getModule($attr[2]);
             $route = explode('@', $attr[2]);
 
             // 处理路由信息
