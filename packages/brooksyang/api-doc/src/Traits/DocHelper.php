@@ -96,27 +96,40 @@ trait DocHelper
                 });
             }
 
-            // 处理路由
+            // 获取api信息
             $data = [];
             foreach ($routes as $route) {
-                $attr = explode(':', $route);
-
-                $module = $this->getModule($attr[2]);
-                $route = explode('@', $attr[2]);
-
-                // 处理api信息
-                $data[] = [
-                    'name'       => $this->getApiName($route[0], $route[1]),
-                    'method'     => Arr::first(explode('|', $attr[0])),
-                    'uri'        => $attr[1],
-                    'controller' => $route[0],
-                    'action'     => $route[1],
-                    'module'     => $module,
-                ];
+                $data[] = $this->getApiInfo($route);
             }
 
             return $data;
         });
+    }
+
+    /**
+     * 获取api信息
+     *
+     * @param $route
+     * @return array
+     */
+    protected function getApiInfo($route)
+    {
+        $attr = explode(':', $route);
+
+        $module = $this->getModule($attr[2]);
+        $route = explode('@', $attr[2]);
+
+        // 处理api信息
+        $api = [
+            'name'       => $this->getApiName($route[0], $route[1]),
+            'method'     => Arr::first(explode('|', $attr[0])),
+            'uri'        => $attr[1],
+            'controller' => $route[0],
+            'action'     => $route[1],
+            'module'     => $module,
+        ];
+
+        return $api;
     }
 
     /**
