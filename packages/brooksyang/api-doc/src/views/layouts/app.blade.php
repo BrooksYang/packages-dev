@@ -28,7 +28,7 @@
             </div>
 
             <div class="column is-offset-2 is-10">
-                @include('api_doc::layouts.includes.form')
+                @yield('content')
             </div>
         </div>
     </div>

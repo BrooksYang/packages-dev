@@ -20,8 +20,6 @@ class DocController extends Controller
     {
         $items = Doc::api($module);
 
-        dd($items);
-
-        return view('api_doc::index');
+        return view('api_doc::index', compact('items'));
     }
 }
