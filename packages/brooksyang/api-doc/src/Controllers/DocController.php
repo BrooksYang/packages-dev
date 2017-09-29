@@ -22,4 +22,21 @@ class DocController extends Controller
 
         return view('api_doc::index', compact('items'));
     }
+
+    /**
+     * 获取api详情
+     *
+     * @param $api
+     * @return mixed
+     */
+    public function show($api)
+    {
+        $api = explode('|', base64_decode($api));
+        $controller = $api[0];
+        $action = $api[1];
+
+        $docs = $this->getDocs($controller, $action);
+
+        dd($docs);
+    }
 }

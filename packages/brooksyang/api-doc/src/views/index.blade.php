@@ -3,6 +3,7 @@
 @section('css')
     <style>
         span {  width:60px; margin-right: 5px; }
+        td a { color: #363636; }
     </style>
 @endsection
 
@@ -21,19 +22,29 @@
             <tr>
                 <th>{{ $key + 1 }}</th>
                 <td>
+                    {{-- method --}}
                     @if ($item['method'] == 'GET')
-                        <span class="tag is-info">{{ $item['method'] }}</span>
+                        <span class="tag is-rounded is-info">{{ $item['method'] }}</span>
                     @elseif ($item['method'] == 'POST')
-                        <span class="tag is-success">{{ $item['method'] }}</span>
+                        <span class="tag is-rounded is-success">{{ $item['method'] }}</span>
                     @elseif (in_array($item['method'], ['PUT', 'PATCH']))
-                        <span class="tag is-warning">{{ $item['method'] }}</span>
+                        <span class="tag is-rounded is-warning">{{ $item['method'] }}</span>
                     @elseif ($item['method'] == 'DELETE')
-                        <span class="tag is-danger">{{ $item['method'] }}</span>
+                        <span class="tag is-rounded is-danger">{{ $item['method'] }}</span>
                     @endif
 
-                    {{ $item['uri'] }}
+                    {{-- URI --}}
+                    <a href="{{ url('api/' . base64_encode($item['controller'] . '|' . $item['action']) ) }}">
+                        {{ $item['uri'] }}
+                    </a>
                 </td>
-                <td>{{ $item['name'] }}</td>
+
+                <td>
+                    {{-- name --}}
+                    <a href="{{ url('api/' . base64_encode($item['controller'] . '|' . $item['action']) ) }}">
+                        {{ $item['name'] }}
+                    </a>
+                </td>
                 <td>{{ $item['module'] }}</td>
             </tr>
         @endforeach
