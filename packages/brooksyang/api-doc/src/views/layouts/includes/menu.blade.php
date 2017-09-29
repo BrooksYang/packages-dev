@@ -5,7 +5,8 @@
     <ul class="menu-list">
         @foreach ($modules as $module)
             <li>
-                <a class="{{ Request::get('uri') == $module ? 'is-active' : '' }}">
+                <a href="{{ url("api/docs/$module") }}"
+                   class="{{ Request::route()->parameter('module') == $module ? 'is-active' : '' }}">
                     {{ $module }}
                 </a>
             </li>
