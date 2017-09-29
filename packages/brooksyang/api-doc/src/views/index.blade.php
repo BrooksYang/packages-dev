@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    <table class="table is-fullwidth is-striped">
+    <table class="table is-fullwidth">
         <thead>
         <tr>
             <th>序号</th>

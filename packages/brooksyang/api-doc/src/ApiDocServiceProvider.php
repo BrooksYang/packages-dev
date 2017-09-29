@@ -49,6 +49,7 @@ class ApiDocServiceProvider extends ServiceProvider
     {
         View::composer(['api_doc::layouts.includes.menu'], function ($view) {
             $view->with('modules', \BrooksYang\ApiDoc\Facades\Doc::modules());
+            $view->with('total', \BrooksYang\ApiDoc\Facades\Doc::total());
         });
     }
 }

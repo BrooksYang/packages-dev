@@ -84,7 +84,7 @@ trait DocHelper
      */
     protected function getApiByModule($routes, $module = '')
     {
-        return Cache::tags("api.$module")->remember('api_doc', config('session.lifetime'), function () use ($routes, $module) {
+        return Cache::tags("api_doc")->remember("doc_for_$module", config('session.lifetime'), function () use ($routes, $module) {
 
             // 筛选有模块的控制器
             $routes = $this->routesFilter($routes);
@@ -100,6 +100,8 @@ trait DocHelper
             $data = [];
             foreach ($routes as $route) {
                 $attr = explode(':', $route);
+
+                $module = $this->getModule($attr[2]);
                 $route = explode('@', $attr[2]);
 
                 // 处理api信息

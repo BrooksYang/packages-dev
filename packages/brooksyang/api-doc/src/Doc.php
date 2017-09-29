@@ -3,6 +3,7 @@
 namespace BrooksYang\ApiDoc;
 
 use BrooksYang\ApiDoc\Traits\DocHelper;
+use Illuminate\Support\Facades\Cache;
 
 class Doc
 {
@@ -41,5 +42,17 @@ class Doc
         $routes = $this->getRoutes();
 
         return $this->getApiByModule($routes, $module);
+    }
+
+    /**
+     * 获取api总数
+     *
+     * @return int
+     */
+    public function total()
+    {
+        $total = Cache::tags("api_doc")->get('doc_for_');
+
+        return count($total);
     }
 }
