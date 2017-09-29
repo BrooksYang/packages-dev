@@ -42,9 +42,7 @@ trait DocHelper
         return Cache::tags('modules')->remember('api_doc', config('session.lifetime'), function () use ($routes) {
 
             // 筛选 App\Http\Controllers 下的控制器
-            $routes = array_filter($routes, function ($item) {
-                return substr_count($item, '\\') > 3;
-            });
+            $routes = $this->routesFilter($routes);
 
             $modules = [];
 
@@ -78,41 +76,50 @@ trait DocHelper
     }
 
     /**
-     * 按模块获取路由
+     * 获取指定模块下的api
      *
-     * @param $routes
+     * @param        $routes
+     * @param string $module
      * @return array
      */
-    protected function getRouteInfoByModules($routes)
+    protected function getApiByModule($routes, $module = '')
     {
-        // 处理路由
-        $modules = [];
-        foreach ($routes as $route) {
-            // 排除 App\Http\Controllers 下的控制器
-            if (substr_count($route, '\\') <= 3 ) continue;
+        return Cache::tags("api.$module")->remember('api_doc', config('session.lifetime'), function () use ($routes, $module) {
 
-            // 获取模块
-            $attr = explode(':', $route);
-            $module = $this->getModule($attr[2]);
-            $route = explode('@', $attr[2]);
+            // 筛选有模块的控制器
+            $routes = $this->routesFilter($routes);
 
-            // 处理路由信息
-            $routeInfo = [
-                'module'     => $module,
-                'method'     => Arr::first(explode('|', $attr[0])),
-                'uri'        => $attr[1],
-                'controller' => $route[0],
-                'action'     => $route[1],
-            ];
+            // 筛选指定模块下的控制器
+            if ($module) {
+                $routes = array_filter($routes, function ($item) use ($module) {
+                    return in_array($module, explode('\\', $item));
+                });
+            }
 
-            // 获取api文档
-            $docs = $this->getDocs($routeInfo['controller'], $routeInfo['action']);
-            $routeInfo['name'] = $docs['name'];
+            // 处理路由
+            $data = [];
+            foreach ($routes as $route) {
+                $attr = explode(':', $route);
+                $route = explode('@', $attr[2]);
 
-            $modules[$module][] = $routeInfo;
-        }
+                // 处理api信息
+                $routeInfo = [
+                    'module'     => $module,
+                    'method'     => Arr::first(explode('|', $attr[0])),
+                    'uri'        => $attr[1],
+                    'controller' => $route[0],
+                    'action'     => $route[1],
+                ];
 
-        return $modules;
+                // 获取api文档
+                $docs = $this->getDocs($routeInfo['controller'], $routeInfo['action']);
+                $routeInfo['name'] = $docs['name'];
+
+                $data[] = $routeInfo;
+            }
+
+            return $data;
+        });
     }
 
     /**
@@ -133,5 +140,20 @@ trait DocHelper
         $docs['name'] = $matches[1];
 
         return $docs;
+    }
+
+    /**
+     * 筛选有模块的控制器
+     *
+     * @param $routes
+     * @return array
+     */
+    private function routesFilter($routes)
+    {
+        $routes = array_filter($routes, function ($item) {
+            return substr_count($item, '\\') > 3;
+        });
+
+        return $routes;
     }
 }

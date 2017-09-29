@@ -29,4 +29,17 @@ class Doc
 
         return $this->getModules($routes);
     }
+
+    /**
+     * 获取指定模块下的api
+     *
+     * @param $module
+     * @return array
+     */
+    public function api($module)
+    {
+        $routes = $this->getRoutes();
+
+        return $this->getApiByModule($routes, $module);
+    }
 }

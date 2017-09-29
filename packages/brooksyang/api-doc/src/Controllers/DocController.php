@@ -11,14 +11,16 @@ class DocController extends Controller
     use DocHelper;
 
     /**
-     * Display a listing of the resource.
+     * api 列表
      *
-     * @return \Illuminate\Http\Response
+     * @param $module
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index($module = '')
     {
-        // 按模块获取路由
-        $modules = Doc::modules();
+        $items = Doc::api($module);
+
+        dd($items);
 
         return view('api_doc::index');
     }
