@@ -3,6 +3,7 @@
 namespace BrooksYang\ApiDoc\Traits;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Cache;
 use ReflectionClass;
 
 trait DocHelper
@@ -14,17 +15,20 @@ trait DocHelper
      */
     protected function getRoutes()
     {
-        $path = base_path();
+        return Cache::tags('routes')->remember('api_doc', config('session.lifetime'), function () {
 
-        // 获取api路由
-        exec("php $path/artisan route:list|grep -E 'App'|awk '{print $3\":\"$5\":\"$8\":\"$9}'", $routes);
+            $path = base_path();
 
-        // 处理数据
-        $routes = array_map(function ($item) {
-            return str_replace(':|', '', $item);
-        }, $routes);
+            // 获取api路由
+            exec("php $path/artisan route:list|grep -E 'App'|awk '{print $3\":\"$5\":\"$8\":\"$9}'", $routes);
 
-        return $routes;
+            // 处理数据
+            $routes = array_map(function ($item) {
+                return str_replace(':|', '', $item);
+            }, $routes);
+
+            return $routes;
+        });
     }
 
     /**
@@ -35,24 +39,27 @@ trait DocHelper
      */
     protected function getModules($routes)
     {
-        // 筛选 App\Http\Controllers 下的控制器
-        $routes = array_filter($routes, function ($item) {
-            return substr_count($item, '\\') > 3;
-        });
+        return Cache::tags('modules')->remember('api_doc', config('session.lifetime'), function () use ($routes) {
 
-        $modules = [];
+            // 筛选 App\Http\Controllers 下的控制器
+            $routes = array_filter($routes, function ($item) {
+                return substr_count($item, '\\') > 3;
+            });
 
-        foreach ($routes as $route) {
-            $attr = explode(':', $route);
+            $modules = [];
 
-            $module = $this->getModule($attr[2]);
+            foreach ($routes as $route) {
+                $attr = explode(':', $route);
 
-            if (!in_array($module, $modules)) {
-                array_unshift($modules, $module);
+                $module = $this->getModule($attr[2]);
+
+                if (!in_array($module, $modules)) {
+                    array_unshift($modules, $module);
+                }
             }
-        }
 
-        return $modules;
+            return $modules;
+        });
     }
 
     /**
