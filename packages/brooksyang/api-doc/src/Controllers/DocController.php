@@ -31,12 +31,18 @@ class DocController extends Controller
      */
     public function show($api)
     {
-        $api = explode('|', base64_decode($api));
-        $controller = $api[0];
-        $action = $api[1];
+        $api = json_decode(base64_decode($api));
 
-        $params = $this->getApiParams($controller, $action);
+        $routes = $this->getRoutes();
+        $route = array_first($routes, function ($item) use ($api) {
+            return in_array("$api->controller@$api->action", explode(':', $item));
+        });
 
-        dd($params);
+        $info = $this->getApiInfo($route);
+        $params = $this->getApiParams($api->controller, $api->action);
+
+        $data = compact('info', 'params');
+
+        return $data;
     }
 }
