@@ -35,8 +35,8 @@ class DocController extends Controller
         $controller = $api[0];
         $action = $api[1];
 
-        $docs = $this->getDocs($controller, $action);
+        $name = $this->getApiName($controller, $action);
 
-        dd($docs);
+        dd($name);
     }
 }

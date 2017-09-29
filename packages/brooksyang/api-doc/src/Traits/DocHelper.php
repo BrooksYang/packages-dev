@@ -105,19 +105,14 @@ trait DocHelper
                 $route = explode('@', $attr[2]);
 
                 // 处理api信息
-                $routeInfo = [
-                    'module'     => $module,
+                $data[] = [
+                    'name'       => $this->getApiName($route[0], $route[1]),
                     'method'     => Arr::first(explode('|', $attr[0])),
                     'uri'        => $attr[1],
                     'controller' => $route[0],
                     'action'     => $route[1],
+                    'module'     => $module,
                 ];
-
-                // 获取api文档
-                $docs = $this->getDocs($routeInfo['controller'], $routeInfo['action']);
-                $routeInfo['name'] = $docs['name'];
-
-                $data[] = $routeInfo;
             }
 
             return $data;
@@ -131,7 +126,7 @@ trait DocHelper
      * @param $action
      * @return mixed
      */
-    protected function getDocs($controller, $action)
+    protected function getApiName($controller, $action)
     {
         $reflection = new ReflectionClass($controller);
 
@@ -139,9 +134,9 @@ trait DocHelper
         $docComment = $method->getDocComment();
 
         preg_match('/\s+\*\s+(.+)/', $docComment, $matches);
-        $docs['name'] = @$matches[1];
+        $name = @$matches[1];
 
-        return $docs;
+        return $name;
     }
 
     /**
