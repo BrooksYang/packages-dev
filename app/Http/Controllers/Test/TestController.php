@@ -8,13 +8,17 @@ use App\Http\Controllers\Controller;
 class TestController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 测试列表
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return array
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $name = $request->input('name'); // 名称
+        $description = $request->input('description'); // 描述
+
+        return compact('name', 'description');
     }
 
     /**
