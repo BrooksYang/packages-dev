@@ -32,3 +32,7 @@
         <li><a>Balance</a></li>
     </ul>
 </aside>
+
+@foreach ($modules as $module)
+    {{ $module }}
+@endforeach

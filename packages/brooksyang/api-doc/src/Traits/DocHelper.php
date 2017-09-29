@@ -17,7 +17,12 @@ trait DocHelper
         $path = base_path();
 
         // 获取api路由
-        exec("php $path/artisan route:list|grep -E 'App'|awk '{print $3\":\"$5\":\"$8}'", $routes);
+        exec("php $path/artisan route:list|grep -E 'App'|awk '{print $3\":\"$5\":\"$8\":\"$9}'", $routes);
+
+        // 处理数据
+        $routes = array_map(function ($item) {
+            return str_replace(':|', '', $item);
+        }, $routes);
 
         return $routes;
     }
