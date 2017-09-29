@@ -140,6 +140,41 @@ trait DocHelper
     }
 
     /**
+     * 获取api参数
+     *
+     * @param $controller
+     * @param $action
+     * @return array
+     */
+    public function getApiParams($controller, $action)
+    {
+        $reflection = new ReflectionClass($controller);
+
+        $method = $reflection->getMethod($action);
+
+        $code = file_get_contents($reflection->getFileName());
+        $codeArr = explode("\n", $code);
+
+        $start = $method->getStartLine();
+        $end = $method->getEndLine();
+        $methodCode = array_slice($codeArr, $start, $end - $start);
+
+        $params = [];
+        foreach ($methodCode as $line) {
+            //注释提取
+            $comment = explode('//', $line);
+            $commentStr = trim(@$comment[1]);
+
+            $reg = '/\Input::get\(([\'\"])([^\'\"]+)(\\1).*\)/';
+            if (preg_match($reg, $line, $matches)) {
+                $params[@$matches[2]] = $commentStr;
+            }
+        }
+
+        return $params;
+    }
+
+    /**
      * 筛选有模块的控制器
      *
      * @param $routes

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Test;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 class TestController extends Controller
 {
@@ -15,7 +16,9 @@ class TestController extends Controller
      */
     public function index(Request $request)
     {
-        $name = $request->input('name'); // 名称
+        $test = Input::get('test'); // 测试
+        $test = Input::get('keyword'); // 关键词
+        $name = $request->get('name'); // 名称
         $description = $request->input('description'); // 描述
 
         return compact('name', 'description');
