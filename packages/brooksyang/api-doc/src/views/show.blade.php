@@ -52,7 +52,7 @@
                     </div>
                 </p>
                 <p class="control is-expanded">
-                    <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
+                    <input class="input" type="text" name="tokenForApiDoc" value="{{ session('tokenForApiDoc') }}" placeholder="请输入token">
                 </p>
                 <p class="control">
                     <a class="button is-primary is-outlined">Remember Token</a>

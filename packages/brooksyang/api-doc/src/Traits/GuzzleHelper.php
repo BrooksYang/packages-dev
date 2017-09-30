@@ -9,14 +9,16 @@ trait GuzzleHelper
     /**
      * guzzle 请求
      *
-     * @param        $method
-     * @param        $url
-     * @param array  $param
-     * @param string $token
+     * @param       $method
+     * @param       $url
+     * @param array $param
      * @return mixed
      */
-    public function sendRequest($method, $url, $param = [], $token = '')
+    public function sendRequest($method, $url, $param = [])
     {
+        // 获取token
+        $token = session('tokenForApiDoc');
+
         // 发送请求
         $client = new Client(['headers' => ['Authorization' => "Bearer $token"]]);
         $response = $client->request($method, $url, ['json' => $param, 'verify' => false]);
