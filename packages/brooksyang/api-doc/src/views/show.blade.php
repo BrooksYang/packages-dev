@@ -41,7 +41,7 @@
         </div>
 
         <div class="box">
-            请求头部：
+            <strong>请求头部：</strong>
             <hr>
             <div class="field has-addons">
                 <p class="control">
@@ -61,7 +61,7 @@
         </div>
 
         <div class="box">
-            请求参数：
+            <strong>请求参数：</strong>
             <hr>
             <table class="table is-fullwidth is-narrow">
                 <thead>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="box">
-            返回结果：
+            <strong>返回结果：</strong>
             <hr>
             <pre>{{ session('params') }}</pre>
         </div>
