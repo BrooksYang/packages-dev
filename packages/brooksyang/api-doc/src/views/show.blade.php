@@ -33,24 +33,30 @@
         </p>
     </div>
 
-    <table class="table is-fullwidth">
-        <thead>
-        <tr>
-            <th class="">序号</th>
-            <th>参数</th>
-            <th>值</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($params as $key => $param)
+    <div class="box">
+        <table class="table is-fullwidth">
+            <thead>
             <tr>
-                <th>{{ $key + 1 }}</th>
-                <td>{{ $param['param'] }}</td>
-                <td>
-                    <input class="input" type="email" placeholder="{{ $param['comment'] }}">
-                </td>
+                <th class="">序号</th>
+                <th>参数</th>
+                <th>值</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach ($params as $key => $param)
+                <tr>
+                    <th>{{ $key + 1 }}</th>
+                    <td>{{ $param['param'] }}</td>
+                    <td>
+                        <input class="input" type="email" placeholder="{{ $param['comment'] }}">
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div class="box">
+        返回结果：
+    </div>
 @endsection
