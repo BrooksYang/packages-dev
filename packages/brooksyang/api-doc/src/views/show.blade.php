@@ -61,7 +61,9 @@
                     <tr>
                         <td>{{ $param['param'] }}</td>
                         <td>
-                            <input class="input" type="text" name="{{ $param['param'] }}" placeholder="{{ $param['comment'] }}">
+                            <input class="input" type="text" name="{{ $param['param'] }}"
+                                   value="{{ old($param['param']) }}"
+                                   placeholder="{{ $param['comment'] }}">
                         </td>
                     </tr>
                 @endforeach
@@ -73,8 +75,7 @@
             返回结果：
             <hr>
             <pre>
-                {{ session('params') }}
-            </pre>
+            {{ session('params') }}
         </div>
     </form>
 @endsection
