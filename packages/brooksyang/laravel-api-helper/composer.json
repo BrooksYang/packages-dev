@@ -23,7 +23,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BrooksYang\\LaravelApiHelper\\ApiDocServiceProvider"
+                "BrooksYang\\LaravelApiHelper\\ApiHelperServiceProvider"
             ],
             "aliases": {
                 "Doc": "BrooksYang\\LaravelApiHelper\\Facades\\Doc"
