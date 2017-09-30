@@ -180,7 +180,10 @@ trait DocHelper
 
             $reg = '/\Input::get\(([\'\"])([^\'\"]+)(\\1).*\)/';
             if (preg_match($reg, $line, $matches)) {
-                $params[@$matches[2]] = $commentStr;
+                $params[] = [
+                    'param' => @$matches[2],
+                    'comment' => $commentStr,
+                ];
             }
         }
 

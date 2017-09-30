@@ -41,8 +41,6 @@ class DocController extends Controller
         $info = $this->getApiInfo($route);
         $params = $this->getApiParams($api->controller, $api->action);
 
-        $data = compact('info', 'params');
-
-        return $data;
+        return view('api_doc::show', compact('info', 'params'));
     }
 }
