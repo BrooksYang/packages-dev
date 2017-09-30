@@ -34,14 +34,14 @@
                     @endif
 
                     {{-- URI --}}
-                    <a href="{{ url('api/' . base64_encode(json_encode($item)) ) }}">
+                    <a href="{{ url('api/docs/' . $item['module'] . '/' . base64_encode(json_encode($item)) ) }}">
                         {{ $item['uri'] }}
                     </a>
                 </td>
 
                 <td>
                     {{-- name --}}
-                    <a href="{{ url('api/' . base64_encode(json_encode($item)) ) }}">
+                    <a href="{{ url('api/docs/' . $item['module'] . '/' . base64_encode(json_encode($item)) ) }}">
                         {{ $item['name'] }}
                     </a>
                 </td>

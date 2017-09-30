@@ -21,7 +21,7 @@
 @section('content')
     <form action="">
         <div class="">
-            <a href="javascript:history.back();" class="button button-custom">返回</a>
+            <a href="{{ url("api/docs/$module") }}" class="button button-custom">返回</a>
             <button class="button is-outlined is-primary button-custom" type="submit">测试</button>
         </div>
 

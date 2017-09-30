@@ -26,10 +26,11 @@ class DocController extends Controller
     /**
      * 获取api详情
      *
+     * @param $module
      * @param $api
      * @return mixed
      */
-    public function show($api)
+    public function show($module, $api)
     {
         $api = json_decode(base64_decode($api));
 
@@ -41,6 +42,6 @@ class DocController extends Controller
         $info = $this->getApiInfo($route);
         $params = $this->getApiParams($api->controller, $api->action);
 
-        return view('api_doc::show', compact('info', 'params'));
+        return view('api_doc::show', compact('info', 'params', 'module'));
     }
 }

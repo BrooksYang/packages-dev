@@ -6,5 +6,5 @@ Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Brooks
     Route::get('docs/{module?}', 'DocController@index');
 
     // api详情
-    Route::get('{api}', 'DocController@show');
+    Route::get('docs/{module}/{api}', 'DocController@show');
 });
