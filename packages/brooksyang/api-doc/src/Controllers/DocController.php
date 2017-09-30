@@ -4,13 +4,13 @@ namespace BrooksYang\ApiDoc\Controllers;
 
 use BrooksYang\ApiDoc\Facades\Doc;
 use BrooksYang\ApiDoc\Traits\DocHelper;
-use GuzzleHttp\Client;
+use BrooksYang\ApiDoc\Traits\GuzzleHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class DocController extends Controller
 {
-    use DocHelper;
+    use DocHelper, GuzzleHelper;
 
     /**
      * api 列表
@@ -62,30 +62,5 @@ class DocController extends Controller
         $data = $this->sendRequest($method, $url, $params);
 
         return back()->with('params', json_encode($data, JSON_PRETTY_PRINT))->withInput();
-    }
-
-    /**
-     * guzzle 请求
-     *
-     * @param       $method
-     * @param       $url
-     * @param array $param
-     * @return mixed
-     */
-    public function sendRequest($method, $url, $param = [])
-    {
-        // 获取token
-        $token = session('token');
-
-        // 发送请求
-        $client = new Client(['headers' => ['Authorization' => "Bearer $token"]]);
-        $response = $client->request($method, $url, ['json' => $param, 'verify' => false]);
-
-        // 请求状态异常处理
-        $code = $response->getStatusCode();
-        if ($code != 200) abort($code);
-
-        // 返回数据
-        return json_decode((string)$response->getBody(), true);
     }
 }
