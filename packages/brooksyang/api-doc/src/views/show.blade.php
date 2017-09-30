@@ -4,7 +4,7 @@
     <style>
         span {  width:60px; margin-right: 5px; }
         td a { color: #363636; }
-        .button-custom {  width: 80px; height: 30px;  margin-bottom: 15px;  }
+        .button-custom {  width: 80px;  margin-bottom: 15px;  }
     </style>
 @endsection
 
