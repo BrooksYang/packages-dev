@@ -56,6 +56,6 @@ class DocController extends Controller
     {
         $params = $request->all();
 
-        return $params;
+        return back()->with('params', json_encode($params));
     }
 }

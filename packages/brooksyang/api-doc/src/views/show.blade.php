@@ -73,7 +73,7 @@
             返回结果：
             <hr>
             <pre>
-                test
+                {{ session('params') }}
             </pre>
         </div>
     </form>
