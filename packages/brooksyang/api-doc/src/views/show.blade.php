@@ -49,7 +49,7 @@
         <div class="box">
             请求参数：
             <hr>
-            <table class="table is-fullwidth">
+            <table class="table is-fullwidth is-narrow">
                 <thead>
                 <tr>
                     <th>参数</th>
