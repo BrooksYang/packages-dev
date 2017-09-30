@@ -22,8 +22,9 @@
     <form action="{{ url('api/send') }}" method="POST">
         {{ csrf_field() }}
 
-        {{-- method--}}
+        {{-- request info--}}
         <input type="hidden" name="method" value="{{ $info['method'] }}">
+        <input type="hidden" name="uri" value="{{ $info['uri'] }}">
 
         {{-- Button --}}
         <div class="">
