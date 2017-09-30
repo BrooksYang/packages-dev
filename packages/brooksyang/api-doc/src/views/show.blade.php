@@ -52,7 +52,6 @@
             <table class="table is-fullwidth">
                 <thead>
                 <tr>
-                    <th class="">序号</th>
                     <th>参数</th>
                     <th>值</th>
                 </tr>
@@ -60,7 +59,6 @@
                 <tbody>
                 @foreach ($params as $key => $param)
                     <tr>
-                        <th>{{ $key + 1 }}</th>
                         <td>{{ $param['param'] }}</td>
                         <td>
                             <input class="input" type="text" name="{{ $param['param'] }}" placeholder="{{ $param['comment'] }}">
