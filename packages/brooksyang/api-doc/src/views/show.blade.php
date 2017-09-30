@@ -74,8 +74,7 @@
         <div class="box">
             返回结果：
             <hr>
-            <pre>
-            {{ session('params') }}
+            <pre>{{ session('params') }}</pre>
         </div>
     </form>
 @endsection
