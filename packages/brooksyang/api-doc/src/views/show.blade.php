@@ -56,7 +56,11 @@
             <hr>
             <div class="field has-addons">
                 <p class="control">
-                    <a class="button">Authorization: Bearer</a>
+                    <div class="select">
+                        <select>
+                            <option>Authorization: Bearer</option>
+                        </select>
+                    </div>
                 </p>
                 <p class="control is-expanded">
                     <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
