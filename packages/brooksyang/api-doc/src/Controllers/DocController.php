@@ -4,12 +4,13 @@ namespace BrooksYang\ApiDoc\Controllers;
 
 use BrooksYang\ApiDoc\Facades\Doc;
 use BrooksYang\ApiDoc\Traits\DocHelper;
+use BrooksYang\ApiDoc\Traits\GuzzleHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 class DocController extends Controller
 {
-    use DocHelper;
+    use DocHelper, GuzzleHelper;
 
     /**
      * api 列表
@@ -55,7 +56,7 @@ class DocController extends Controller
     public function send(Request $request)
     {
         $params = $request->all();
-        unset($params['_token']);
+        unset($params['_token'], $params['method']);
 
         return back()->with('params', json_encode($params, JSON_PRETTY_PRINT))->withInput();
     }
