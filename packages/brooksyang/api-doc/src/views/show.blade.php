@@ -54,14 +54,17 @@
         <div class="box">
             请求头部：
             <hr>
-            <table class="table is-fullwidth is-narrow">
-                <tr>
-                    <td>Authorization </td>
-                    <td>
-                        <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
-                    </td>
-                </tr>
-            </table>
+            <div class="field has-addons">
+                <p class="control">
+                    <a class="button">Authorization: Bearer</a>
+                </p>
+                <p class="control is-expanded">
+                    <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
+                </p>
+                <p class="control">
+                    <a class="button">Remember Token</a>
+                </p>
+            </div>
         </div>
 
         <div class="box">
