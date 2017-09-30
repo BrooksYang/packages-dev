@@ -55,6 +55,7 @@ class DocController extends Controller
     public function send(Request $request)
     {
         $params = $request->all();
+        unset($params['_token']);
 
         return back()->with('params', json_encode($params, JSON_PRETTY_PRINT))->withInput();
     }
