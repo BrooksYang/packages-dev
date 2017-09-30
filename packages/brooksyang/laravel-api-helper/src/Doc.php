@@ -1,8 +1,8 @@
 <?php
 
-namespace BrooksYang\ApiDoc;
+namespace BrooksYang\LaravelApiHelper;
 
-use BrooksYang\ApiDoc\Traits\DocHelper;
+use BrooksYang\LaravelApiHelper\Traits\DocHelper;
 use Illuminate\Support\Facades\Cache;
 
 class Doc

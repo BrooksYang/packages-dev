@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'BrooksYang\ApiDoc\Controllers'], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'BrooksYang\LaravelApiHelper\Controllers'], function () {
 
     // api主页
     Route::get('docs/{module?}', 'DocController@index');

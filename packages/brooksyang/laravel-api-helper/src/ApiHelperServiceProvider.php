@@ -1,11 +1,11 @@
 <?php
 
-namespace BrooksYang\ApiDoc;
+namespace BrooksYang\LaravelApiHelper;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
-class ApiDocServiceProvider extends ServiceProvider
+class ApiHelperServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -48,8 +48,8 @@ class ApiDocServiceProvider extends ServiceProvider
     public function viewComposer()
     {
         View::composer(['api_doc::layouts.includes.menu'], function ($view) {
-            $view->with('modules', \BrooksYang\ApiDoc\Facades\Doc::modules());
-            $view->with('total', \BrooksYang\ApiDoc\Facades\Doc::total());
+            $view->with('modules', \BrooksYang\LaravelApiHelper\Facades\Doc::modules());
+            $view->with('total', \BrooksYang\LaravelApiHelper\Facades\Doc::total());
         });
     }
 }

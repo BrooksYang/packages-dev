@@ -26,7 +26,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "BrooksYang\\ApiDoc\\": "packages/brooksyang/api-doc/src"
+            "BrooksYang\\LaravelApiHelper\\": "packages/brooksyang/laravel-api-helper/src"
         }
     },
     "autoload-dev": {

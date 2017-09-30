@@ -1,10 +1,10 @@
 <?php
 
-namespace BrooksYang\ApiDoc\Controllers;
+namespace BrooksYang\LaravelApiHelper\Controllers;
 
-use BrooksYang\ApiDoc\Facades\Doc;
-use BrooksYang\ApiDoc\Traits\DocHelper;
-use BrooksYang\ApiDoc\Traits\GuzzleHelper;
+use BrooksYang\LaravelApiHelper\Facades\Doc;
+use BrooksYang\LaravelApiHelper\Traits\DocHelper;
+use BrooksYang\LaravelApiHelper\Traits\GuzzleHelper;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

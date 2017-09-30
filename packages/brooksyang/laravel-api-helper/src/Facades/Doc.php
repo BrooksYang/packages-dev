@@ -1,6 +1,6 @@
 <?php
 
-namespace BrooksYang\ApiDoc\Facades;
+namespace BrooksYang\LaravelApiHelper\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

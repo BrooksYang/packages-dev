@@ -1,5 +1,5 @@
 {
-    "name": "brooksyang/api-doc",
+    "name": "brooksyang/laravel-api-helper",
     "description": "Api doc generator for laravel 5.5+",
     "license": "MIT",
     "authors": [
@@ -17,16 +17,16 @@
     },
     "autoload": {
         "psr-4": {
-            "BrooksYang\\ApiDoc\\": "src/"
+            "BrooksYang\\LaravelApiHelper\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "BrooksYang\\ApiDoc\\ApiDocServiceProvider"
+                "BrooksYang\\LaravelApiHelper\\ApiDocServiceProvider"
             ],
             "aliases": {
-                "Doc": "BrooksYang\\ApiDoc\\Facades\\Doc"
+                "Doc": "BrooksYang\\LaravelApiHelper\\Facades\\Doc"
             }
         }
     }

@@ -168,7 +168,7 @@ return [
          * Package Service Providers...
          */
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        BrooksYang\ApiDoc\ApiDocServiceProvider::class,
+        BrooksYang\LaravelApiHelper\ApiHelperServiceProvider::class,
 
         /*
          * Application Service Providers...

@@ -1,6 +1,6 @@
 <?php
 
-namespace BrooksYang\ApiDoc\Traits;
+namespace BrooksYang\LaravelApiHelper\Traits;
 
 use GuzzleHttp\Client;
 
