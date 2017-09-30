@@ -45,6 +45,8 @@
         </div>
 
         <div class="box">
+            请求参数：
+            <hr>
             <table class="table is-fullwidth">
                 <thead>
                 <tr>
@@ -70,6 +72,10 @@
 
         <div class="box">
             返回结果：
+            <hr>
+            <pre>
+                test
+            </pre>
         </div>
     </form>
 @endsection
