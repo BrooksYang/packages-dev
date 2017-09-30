@@ -55,7 +55,7 @@
                     <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
                 </p>
                 <p class="control">
-                    <a class="button">Remember Token</a>
+                    <a class="button is-primary is-outlined">Remember Token</a>
                 </p>
             </div>
         </div>
