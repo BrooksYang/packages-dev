@@ -12,7 +12,7 @@
         }
 
         .button-custom {
-            width: 80px;
+            width: 100px;
             margin-bottom: 15px;
         }
     </style>
@@ -21,7 +21,7 @@
 @section('content')
     <form action="">
         <div class="">
-            <a href="{{ url("api/docs/$module") }}" class="button button-custom">返回</a>
+            <a href="{{ url("api/docs/$module") }}" class="button button-custom">接口列表</a>
             <button class="button is-outlined is-primary button-custom" type="submit">测试</button>
         </div>
 
