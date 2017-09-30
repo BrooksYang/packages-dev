@@ -17,11 +17,11 @@ class TestController extends Controller
     public function index(Request $request)
     {
         $test = Input::get('test'); // 测试
-        $test = Input::get('keyword'); // 关键词
-        $name = $request->get('name'); // 名称
-        $description = $request->input('description'); // 描述
+        $keyword = Input::get('keyword'); // 关键词
+        $name = Input::get('name'); // 名称
+        $description = Input::get('description'); // 描述
 
-        return compact('name', 'description');
+        return response()->json(compact('test', 'keyword', 'name', 'description'));
     }
 
     /**
