@@ -19,7 +19,9 @@
 @endsection
 
 @section('content')
-    <form action="">
+    <form action="{{ url('api/send') }}" method="POST">
+        {{ csrf_field() }}
+
         <div class="">
             <a href="{{ url("api/docs/$module") }}" class="button button-custom">接口列表</a>
             <button class="button is-outlined is-primary button-custom" type="submit">测试</button>
@@ -61,7 +63,7 @@
                         <th>{{ $key + 1 }}</th>
                         <td>{{ $param['param'] }}</td>
                         <td>
-                            <input class="input" type="email" placeholder="{{ $param['comment'] }}">
+                            <input class="input" type="text" name="{{ $param['param'] }}" placeholder="{{ $param['comment'] }}">
                         </td>
                     </tr>
                 @endforeach

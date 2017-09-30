@@ -7,4 +7,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['web'], 'namespace' => 'Brooks
 
     // api详情
     Route::get('docs/{module}/{api}', 'DocController@show');
+
+    // api请求测试
+    Route::post('send', 'DocController@send');
 });

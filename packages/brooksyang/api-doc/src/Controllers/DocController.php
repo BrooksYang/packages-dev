@@ -2,9 +2,10 @@
 
 namespace BrooksYang\ApiDoc\Controllers;
 
-use App\Http\Controllers\Controller;
 use BrooksYang\ApiDoc\Facades\Doc;
 use BrooksYang\ApiDoc\Traits\DocHelper;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class DocController extends Controller
 {
@@ -43,5 +44,18 @@ class DocController extends Controller
         $params = $this->getApiParams($api->controller, $api->action);
 
         return view('api_doc::show', compact('info', 'params', 'module'));
+    }
+
+    /**
+     * 发送请求
+     *
+     * @param Request $request
+     * @return array
+     */
+    public function send(Request $request)
+    {
+        $params = $request->all();
+
+        return $params;
     }
 }
