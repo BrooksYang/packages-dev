@@ -2,19 +2,8 @@
 
 @section('css')
     <style>
-        span {
-            width: 60px;
-            margin-right: 5px;
-        }
-
-        td a {
-            color: #363636;
-        }
-
-        .button-custom {
-            width: 100px;
-            margin-bottom: 15px;
-        }
+        span {  width: 60px;  margin-right: 5px;  }
+        .button-custom {  width: 100px;  margin-bottom: 15px;  }
     </style>
 @endsection
 
