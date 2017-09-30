@@ -52,6 +52,19 @@
         </div>
 
         <div class="box">
+            请求头部：
+            <hr>
+            <table class="table is-fullwidth is-narrow">
+                <tr>
+                    <td>Authorization </td>
+                    <td>
+                        <input class="input" type="text" name="token" value="{{ old('token') }}" placeholder="请输入token">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box">
             请求参数：
             <hr>
             <table class="table is-fullwidth is-narrow">

@@ -4,7 +4,7 @@
             {{ config('app.name') }}
         </a>
 
-        <button class="button navbar-burger">
+        <button class="button navbar-burger" data-target="navMenu">
             <span></span>
             <span></span>
             <span></span>

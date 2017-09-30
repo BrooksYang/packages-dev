@@ -1,8 +1,5 @@
-<aside class="menu">
-    <p class="menu-label">
-        Api Modules
-    </p>
-    <ul class="menu-list">
+<aside class="navbar-menu" id="navMenu">
+    <ul class="menu-list" style="width: 100%">
         <li>
             <a href="{{ url("api/docs") }}" class="{{ Request::path() == 'api/docs' ? 'is-active' : '' }}">
                 全部 ({{ $total }})
