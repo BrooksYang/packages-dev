@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('groups', 'Group\GroupController');
+
+Route::resource('modules', 'Module\ModuleController');
