@@ -25,7 +25,9 @@ class GroupController extends Controller
             'code' => 1,
             'msg' => 'success',
             'data' => [
-                'test' => 'blablabla'
+                'paramA' => $paramA,
+                'paramB' => $paramB,
+                'paramC' => $paramC,
             ]
         ]);
     }
