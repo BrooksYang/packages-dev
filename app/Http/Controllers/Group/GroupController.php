@@ -9,15 +9,18 @@ use Illuminate\Support\Facades\Input;
 class GroupController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 这里是api标题
      *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $a = $request->input('request->input'); // request->input
-        $a = $request->get('get'); // get
-        $a = Input::get('input::get'); // input::get
+        // 支持以下三种方式接收参数
+        $paramA = $request->input('param_a'); // 参数一说明
+        $paramB = $request->get('param_b'); // 参数二说明
+        $paramC = Input::get('param_c'); // 参数三说明
+
+        // 以下是返回内容
         return response()->json([
             'code' => 1,
             'msg' => 'success',
