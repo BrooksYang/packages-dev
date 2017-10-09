@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
+        "nwidart/laravel-modules": "^2.5",
         "predis/predis": "^1.1"
     },
     "require-dev": {
@@ -26,7 +27,8 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "BrooksYang\\LaravelApiHelper\\": "packages/brooksyang/laravel-api-helper/src"
+            "BrooksYang\\LaravelApiHelper\\": "packages/brooksyang/laravel-api-helper/src",
+            "Modules\\": "Modules/"
         }
     },
     "autoload-dev": {

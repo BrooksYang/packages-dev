@@ -1,0 +1,16 @@
+{
+    "name": "UCenter",
+    "alias": "ucenter",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\UCenter\\Providers\\UCenterServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        "start.php"
+    ],
+    "requires": []
+}
