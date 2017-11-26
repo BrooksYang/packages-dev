@@ -29,7 +29,7 @@ class EntranceAdminServiceProvider extends ServiceProvider
             'auth.guards.admin.driver'    => 'session',
             'auth.guards.admin.provider'  => 'admin',
             'auth.providers.admin.driver' => 'eloquent',
-            'auth.providers.admin.model'  => config('entrance.users_model'),
+            'auth.providers.admin.model'  => config('entrance.user'),
         ]);
     }
 
