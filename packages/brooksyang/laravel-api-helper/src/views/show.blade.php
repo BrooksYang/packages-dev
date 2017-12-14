@@ -19,8 +19,8 @@
         {{ csrf_field() }}
 
         {{-- request info--}}
-        <input type="hidden" name="method" value="{{ $info['method'] }}">
-        <input type="hidden" name="uri" value="{{ $info['uri'] }}">
+        <input type="hidden" name="methodForApiDoc" value="{{ $info['method'] }}">
+        <input type="hidden" name="uriForApiDoc" value="{{ $info['uri'] }}">
 
         {{-- Button --}}
         <div class="">
@@ -94,7 +94,16 @@
         <div class="box">
             <strong>返回结果：</strong>
             <hr>
-            <pre>{{ session('params') }}</pre>
+            <pre><div id="code">{{ session('params') }}</div></pre>
         </div>
     </form>
+@endsection
+
+@section('Js')
+    <script>
+        if (window["JSON"] && JSON["stringify"]) {
+            var code = document.getElementById("code");
+            code.innerHTML = JSON.stringify(JSON.parse(code.innerHTML), undefined, 2);
+        }
+    </script>
 @endsection
