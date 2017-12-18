@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 class TestController extends Controller
 {
     /**
-     * 测试列表
+     * GET请求测试
      *
      * @param Request $request
      * @return array
@@ -35,14 +35,22 @@ class TestController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * POST请求测试
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $param1 = $request->input('param1'); // 参数1，必填
+        $param2 = $request->input('param2'); // 参数2，必填
+        $param3 = $request->input('param3'); // 参数3
+
+        $this->validate($request, ['param1' => 'required', 'param2' => 'required']);
+
+        $message = 'POST请求测试';
+
+        return response()->json(compact('message'));
     }
 
     /**

@@ -12,31 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('api/docs');
 });
 
+Route::get('test', 'Test\TestController@index');
 
-// Authentication Routes...
-Route::get('login', 'Auth\LoginController@showLoginForm');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout');
+Route::post('test', 'Test\TestController@store');
 
-// Registration Routes...
-Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register');
-
-// Password Reset Routes...
-Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-
-Route::resource('home', 'Home\HomeController');
-
-Route::resource('test', 'Test\TestController');
-
-Route::resource('groups', 'Group\GroupController');
-
-Route::resource('modules', 'Module\ModuleController');
-
-Route::resource('dashboard', 'Home\Dashboard\DashboardController');
+Route::get('modules', 'Module\ModuleController@index');

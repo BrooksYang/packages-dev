@@ -8,13 +8,15 @@ use App\Http\Controllers\Controller;
 class ModuleController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * 另一模块
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $message = '另一模块';
+
+        return response()->json(compact('message'));
     }
 
     /**
