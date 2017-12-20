@@ -128,7 +128,6 @@ class DocController extends Controller
                 $getParam .= "$key=$param&";
             }
             $url = $getParam ? $url . '?' . rtrim($getParam, '&') : $url;
-            $url = $url . rtrim($getParam, '&');
         }
 
         return $url;
