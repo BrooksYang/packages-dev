@@ -15,8 +15,8 @@ Route::get('/', function () {
     return redirect('api/docs');
 });
 
-Route::get('test', 'Test\TestController@index');
+Route::get('test/get', 'Test\TestController@index');
 
-Route::post('test', 'Test\TestController@store');
+Route::post('test/post', 'Test\TestController@store');
 
 Route::get('modules', 'Module\ModuleController@index');
