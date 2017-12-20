@@ -127,6 +127,7 @@ class DocController extends Controller
             foreach ($params as $key => $param) {
                 $getParam .= "$key=$param&";
             }
+            $url = $getParam ? $url . '?' . rtrim($getParam, '&') : $url;
             $url = $url . rtrim($getParam, '&');
         }
 
