@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Exception;
-use GuzzleHttp\Exception\RequestException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Arr;
 use Illuminate\Validation\ValidationException;
@@ -54,11 +53,6 @@ class Handler extends ExceptionHandler
         // 表单验证异常处理
         if ($exception instanceof ValidationException) {
             return response()->json(['code' => 11, 'msg' => Arr::first($exception->errors())[0], 'data' => null]);
-        }
-
-        // Guzzle Request
-        if ($exception instanceof RequestException) {
-            return back()->with('params', $exception->getMessage())->withInput();
         }
 
         return parent::render($request, $exception);
